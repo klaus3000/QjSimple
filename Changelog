@@ -1,0 +1,48 @@
+QjSimple Changelog:
+
+0.6.7rc:
+- feature: allow dialing service URNs when using direct dialing text field
+- feature: add button to put a call on/off hold
+- fix: disable NAT traversal if STUN server is not configured (otherwise pjsip
+  uses Via header in response to get the public IP, but fails to do NAT traversal
+  for media stream)
+
+0.6.6:
+- feature: updated to pjsip 1.8.10 and Win32OpenSSL-1_0_0d
+
+0.6.5:
+- feature: allow to specify 2 additional headers in INVITE request
+- feature: allow to specify that an account should not REGISTER on initializtation
+
+0.6.4:
+- bugfix: update to pjsip 1.5.5, solves SRTP initialization bug on Windows
+- feature: enhanced installation description
+- feature: added some log messages
+- feature: better STUN status message
+- feature: use QtCreator instead of Eclipse as IDE
+- feature: updated to Qt2009.05 (Qt 4.6.0.0)
+
+0.6.3:
+- feature: added Mac OS X support to Qt Makefile
+
+0.6.2:
+- feature: configure local SIP port (0=random port)
+- bugfix: TCP6 transport disabled as pjsua-lib is buggy
+
+0.6.1:
+- bugfix: do not set transport_id in acc_cfg to avoid new TCP connections for each request
+- bugfix: handle methods which are not handled by pjsua (e.g. PUBLISH, NOTIFY w/o SUBSCRIBE)
+- bugfix: debug log does not have double CRLF anymore
+- bugfix: move pjsip-shutdown to "close"handler
+- feature: Main window includes version number
+- feature: User-Agent header includes QjSimple Version and pjproject version
+- feature: display detected NAT type in the GUI
+- feature: configure TLS privateKey and cert
+
+0.6: 
+- updated to use pjproject-1.3
+- added support for IPv6
+- updated INSTALL_* files
+
+0.5: 
+- first public release

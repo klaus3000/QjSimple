@@ -1,0 +1,115 @@
+install mingw: http://heanet.dl.sourceforge.net/sourceforge/mingw/MinGW-5.1.4.exe
+add g++ and mingw make
+
+install to c:\MinGW
+
+
+install Qt for MinGW: http://www.trolltech.com/download?target=http://ftp.ntua.gr/pub/X11/Qt/qt/source/qt-win-opensource-4.4.0-mingw.exe
+
+
+mkdir c:\workspace
+
+download and install the VC++ 2008 Redistributable Package (needed for OpenSSL package): http://www.microsoft.com/downloads/details.aspx?familyid=9B2DA534-3E03-4391-8A4D-074B9F2BC1BF&displaylang=en
+
+The VC++ 2008 Redistributable Package also needs to be installed on every PC you want to run QjSimple.
+
+download and install openssl: http://www.slproweb.com/download/Win32OpenSSL-0_9_8k.exe
+install to C:\workspace\OpenSSL
+(copy DLLs to /bin directory)
+go to c:\workspace\OpenSSL\lib\MinGW and
+  rename libeay32.a to libcrypto.a
+  rename ssleay32.a to libssl.a
+
+download and install msys: http://heanet.dl.sourceforge.net/sourceforge/mingw/MSYS-1.0.10.exe
+start msys
+# vi /etc/fstab
+add the following line and save: 
+c:/workspace /workspace
+
+
+download and unpack pjproject: http://www.pjsip.org/release/1.4/pjproject-1.4.zip
+into c:\workspace
+
+start msys
+# cd /workspace/
+# cd pjproject-1.4
+
+    configure pjsip with openssl location (note: this must be specified absolute!)
+
+##### CFLAGS=-I/workspace/OpenSSL/include LDFLAGS=-L/workspace/OpenSSL/lib/MinGW ./configure
+# CFLAGS=-I/QtProjects/OpenSSL/include LDFLAGS=-L/QtProjects/OpenSSL/lib/MinGW ./configure 
+
+
+    add 
+
+        #define PJSIP_HAS_TLS_TRANSPORT 1
+        #define PJ_HAS_IPV6 1
+        #define PJSIP_MAX_PKT_LEN 10000
+        #define PJSIP_TCP_KEEP_ALIVE_INTERVAL    30
+        #define PJSIP_TLS_KEEP_ALIVE_INTERVAL    30
+
+
+    to pjlib/include/pj/config_site.h
+
+# make dep
+# make
+optional test the pjsip installation
+# cd pjsip-apps/bin
+# ./pjsua-i686-pc-mingw32.exe
+
+download and unzip QjSimple: http://www.ipcom.at/fileadmin/ipcom/files/QjSimple-0.5.zip
+into c:\workspace\
+Start -> Programs -> Qt -> Qt Command prompt
+# cd c:\workspace\QjSimple-0.6
+# del Makefile*
+
+edit QjSimple.pro:
+INCLUDEPATH += ../pjproject-1.4/pjlib/include \
+    ../pjproject-1.4/pjlib-util/include \
+    ../pjproject-1.4/pjnath/include \
+    ../pjproject-1.4/pjmedia/include \
+    ../pjproject-1.4/pjsip/include
+LIBS += -L../pjproject-1.4/pjlib/lib \
+    -L../pjproject-1.4/pjlib-util/lib \
+    -L../pjproject-1.4/pjnath/lib \
+    -L../pjproject-1.4/pjmedia/lib \
+    -L../pjproject-1.4/pjsip/lib \
+    -L../pjproject-1.4/third_party/lib
+win32-g++:LIBS += -L../OpenSSL/lib/mingw
+win32-g++:LIBS += -lpjsua-i686-pc-mingw32 \
+    -lpjsip-ua-i686-pc-mingw32 \
+    -lpjsip-simple-i686-pc-mingw32 \
+    -lpjsip-i686-pc-mingw32 \
+    -lpjmedia-codec-i686-pc-mingw32 \
+    -lpjmedia-i686-pc-mingw32 \
+    -lpjmedia-codec-i686-pc-mingw32 \
+    -lpjmedia-audiodev-i686-pc-mingw32 \
+    -lpjnath-i686-pc-mingw32 \
+    -lpjlib-util-i686-pc-mingw32 \
+    -lpj-i686-pc-mingw32 \
+    -lportaudio-i686-pc-mingw32 \
+    -lgsmcodec-i686-pc-mingw32 \
+    -lilbccodec-i686-pc-mingw32 \
+    -lspeex-i686-pc-mingw32 \
+    -lresample-i686-pc-mingw32 \
+    -lmilenage-i686-pc-mingw32 \
+    -lsrtp-i686-pc-mingw32 \
+    -lm \
+    -lwinmm \
+    -lole32 \
+    -lws2_32 \
+    -lwsock32 \
+    -lssl \
+    -lcrypto \
+    -lgdi32
+
+# qmake
+# make release
+(if you want to make debug builds you have to first build the Qt debug dlls (Start->programs->qt->build debug libraries)
+
+ and finally run qjsimple
+
+# release/QjSimple.exe
+
+
+For distribution you have to package QjSimple with some DLLs - see readme.txt. 

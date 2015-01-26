@@ -1,0 +1,21 @@
+Building QjSimple under Mac OS X
+(provided by Daniel-Constantin Mierla)
+
+So, first I installed qgit from macports with brought me 
+git4-mac tar ball and after 3 hours it got compiled and 
+installed in /opt/local/lib and qgit worked file 
+(after fixing it to compile, it was some include issue).
+
+Then I got QTcreator via QT SDK for Mac OS X 
+(http://www.qtsoftware.com/downloads) that installed 
+again in /usr/lib the qt libs. Since I compiled with 
+qt creator i think it uses those from /usr. I think the 
+safest is to say QT4 libs for Mac OS X.
+
+I am not yet familiar with the way mac packages itself. 
+The applications are in a directory ending in .app and having 
+a pretty standard structure. I saw some applications that 
+include everything in this directory, libs, a.s.0. so 
+practically are stand alone. I think qjsimple is not the case. 
+
+

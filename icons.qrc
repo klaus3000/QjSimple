@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/icons" >
+        <file alias="online" >famfamfam_mini_icons/flag_green.gif</file>
+        <file alias="offline" >famfamfam_mini_icons/flag_red.gif</file>
+        <file alias="unknown" >famfamfam_mini_icons/flag_white.gif</file>
+        <file alias="directCall" >famfamfam_mini_icons/page_sound.gif</file>
+        <file alias="directIm" >famfamfam_mini_icons/comment.gif</file>
+    </qresource>
+</RCC>

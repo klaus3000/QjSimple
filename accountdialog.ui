@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AccountDialogClass</class>
+ <widget class="QDialog" name="AccountDialogClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>330</width>
+    <height>537</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SIP Account Settings</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="3">
+    <layout class="QGridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>SIP domain:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" colspan="2">
+      <widget class="QLineEdit" name="domainEdit">
+       <property name="toolTip">
+        <string>the domain of your SIP address (e.g. fwd.pulver.com or iptel.org)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>SIP user name:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" colspan="2">
+      <widget class="QLineEdit" name="usernameEdit">
+       <property name="toolTip">
+        <string>username of your SIP address (without domain, unless this is explicitely required by the SIP service)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>SIP password:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1" colspan="2">
+      <widget class="QLineEdit" name="passwordEdit">
+       <property name="toolTip">
+        <string>the password of your SIP account</string>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>STUN server:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1" colspan="2">
+      <widget class="QLineEdit" name="stunEdit">
+       <property name="toolTip">
+        <string>optional: STUN server. If set, this will activate client-based NAT traversal</string>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Normal</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Outbound Proxy:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1" colspan="2">
+      <widget class="QLineEdit" name="outboundproxyEdit">
+       <property name="toolTip">
+        <string>IPv4 optional, IPv6 mandatory: enter outbound proxy domain &lt;br&gt;name or IP address (without 'sip:', Note: ';lr' &lt;br&gt;parameter will be added automatically and 'transport' &lt;br&gt;parameter will be added according to protocol &lt;br&gt;selection); e.g: 'sip.example.com', '[2A02:8::C0:8A:D0:D]'; &lt;br&gt;Note: IPv6 requires an IP address</string>
+       </property>
+       <property name="echoMode">
+        <enum>QLineEdit::Normal</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Protocol:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1" colspan="2">
+      <widget class="QComboBox" name="transportComboBox">
+       <property name="toolTip">
+        <string>the choosen transport protocol for SIP; Note: If you choose an IPv6 transport you have to configure the outbound proxy with an IPv6 IP address</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>SRTP:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1" colspan="2">
+      <widget class="QComboBox" name="srtpComboBox">
+       <property name="toolTip">
+        <string>specify if SRTP is completely disabled (reject incoming SAVP SDP), optional (accept SAVP and AVP, send AVP) or mandatory (accept/send SAVP SDP)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>SRTP SIP requirements:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1" colspan="2">
+      <widget class="QComboBox" name="srtpReqComboBox">
+       <property name="toolTip">
+        <string>whether SRTP requires secure signaling to the proxy (TLS), end-to-end (SIPS) or none</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>TLS CA file:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QLineEdit" name="tlsCaFileEdit">
+       <property name="toolTip">
+        <string>optional: the CA certificate file which contains all the CAs which are trusted; this is needed when &quot;verify TLS server certificate&quot; is activated</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="2">
+      <widget class="QPushButton" name="caPushButton">
+       <property name="text">
+        <string>Browse</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>TLS private key file:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QLineEdit" name="tlsPrivKeyFileEdit">
+       <property name="toolTip">
+        <string>optional: the private key of the SIP client (needed when the SIP Proxy requires a TLS certificate from the client (mutual TLS))</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="2">
+      <widget class="QPushButton" name="privKeyPushButton">
+       <property name="text">
+        <string>Browse</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>TLS certificate file:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QLineEdit" name="tlsCertFileEdit">
+       <property name="toolTip">
+        <string>optional: the certificate of the SIP client (needed when the SIP Proxy requires a TLS certificate from the client (mutual TLS))</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="2">
+      <widget class="QPushButton" name="certPushButton">
+       <property name="text">
+        <string>Browse</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="0">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>Logfile:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="1">
+      <widget class="QLineEdit" name="logFileEdit">
+       <property name="toolTip">
+        <string>optional: if a file is chosen, the logging will also be written to the specified file</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="2">
+      <widget class="QPushButton" name="logFilePushButton">
+       <property name="text">
+        <string>Browse</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="0">
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>XCAP URL:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="1" colspan="2">
+      <widget class="QLineEdit" name="xcapUrlEdit">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="toolTip">
+        <string>The XCAP URL (used for storing the buddylist)</string>
+       </property>
+       <property name="text">
+        <string>--- not implemented yet ---</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="0">
+      <widget class="QLabel" name="label_14">
+       <property name="text">
+        <string>Log Level:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="1" colspan="2">
+      <widget class="QComboBox" name="logLevelComboBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>the choosen transport protocol for SIP</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="0">
+      <widget class="QLabel" name="label_15">
+       <property name="text">
+        <string>Local SIP Port:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="1" colspan="2">
+      <widget class="QSpinBox" name="sipPortSpinBox">
+       <property name="toolTip">
+        <string>Set 0 to use a random SIP port!</string>
+       </property>
+       <property name="maximum">
+        <number>65535</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QCheckBox" name="noregistrationBox">
+     <property name="text">
+      <string>do not REGISTER</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" rowspan="3">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QCheckBox" name="tlsVerifyServerBox">
+     <property name="toolTip">
+      <string>if this checkbox is enabled, the certificate presented by the SIP proxy will be validated against the certification authorities in the CA file</string>
+     </property>
+     <property name="text">
+      <string>verify TLS server certificate</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="subscribeBox">
+     <property name="toolTip">
+      <string>if this checkbox is enabled, the SIP client SUBSCRIBE to the buddies presence</string>
+     </property>
+     <property name="text">
+      <string>SUBSCRIBE buddies</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="publishBox">
+     <property name="toolTip">
+      <string>if this checkbox is enabled, the SIP client sends PUBLISH requests to send its presence state to the presence server</string>
+     </property>
+     <property name="text">
+      <string>PUBLISH presence state</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="3">
+    <layout class="QHBoxLayout">
+     <item>
+      <spacer>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okButton">
+       <property name="text">
+        <string>OK</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelButton">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>domainEdit</tabstop>
+  <tabstop>usernameEdit</tabstop>
+  <tabstop>passwordEdit</tabstop>
+  <tabstop>stunEdit</tabstop>
+  <tabstop>outboundproxyEdit</tabstop>
+  <tabstop>transportComboBox</tabstop>
+  <tabstop>srtpComboBox</tabstop>
+  <tabstop>srtpReqComboBox</tabstop>
+  <tabstop>tlsCaFileEdit</tabstop>
+  <tabstop>caPushButton</tabstop>
+  <tabstop>tlsPrivKeyFileEdit</tabstop>
+  <tabstop>privKeyPushButton</tabstop>
+  <tabstop>tlsCertFileEdit</tabstop>
+  <tabstop>certPushButton</tabstop>
+  <tabstop>tlsVerifyServerBox</tabstop>
+  <tabstop>subscribeBox</tabstop>
+  <tabstop>okButton</tabstop>
+  <tabstop>cancelButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>okButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AccountDialogClass</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>161</x>
+     <y>389</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>64</x>
+     <y>131</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AccountDialogClass</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>244</x>
+     <y>389</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>291</x>
+     <y>126</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

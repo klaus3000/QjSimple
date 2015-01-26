@@ -1,0 +1,9 @@
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON                    "appicon16.ico"
+IDI_ICON2               ICON                    "appicon32.ico"
